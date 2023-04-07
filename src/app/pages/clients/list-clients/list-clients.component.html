@@ -21,9 +21,9 @@
         <td>{{client.street}}, {{client.number}}</td>
         <td>
             &nbsp;
-          <button type="button"  class="btn btn-outline-light btn-sm">Update</button>
+          <a routerLink="/clients/edit/{{client.cpf}}"  class="btn btn-outline-light btn-sm">Update</a>
           &nbsp;
-          <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+          <button type="button" (click)="delete(client.cpf)" class="btn btn-outline-danger btn-sm">Delete</button>
       </td>
       </tr>
 

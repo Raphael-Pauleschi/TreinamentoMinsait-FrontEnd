@@ -1,9 +1,9 @@
-<h1 class="display-6">Register</h1>
+<h1 class="display-6">{{clientCpf? 'Edit':'Register'}}</h1>
 <hr>
 <!-- Forms components == more points-->
 <!--You can use Get in api for enum components-->
 <div class="container-fluid">
-  <form>
+  <form [formGroup]="clientForm" (ngSubmit)="registerAndSubmit()" >
     <div class="row">
       <div class="col-4">
         <div class="mb-3">

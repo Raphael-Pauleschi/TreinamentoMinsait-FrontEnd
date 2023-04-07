@@ -34,6 +34,13 @@ export class ListClientsComponent {
       })
     }, error =>{
       console.error("Couldn't be deleted",error)
+      Swal.fire({
+        title: 'Failure',
+        text: 'Client has not been deleted',
+        icon: 'error',
+        color: 'rgb(240, 248, 255)',
+        background: 'rgb(39, 39, 39)'
+      })
     }
     )
   }

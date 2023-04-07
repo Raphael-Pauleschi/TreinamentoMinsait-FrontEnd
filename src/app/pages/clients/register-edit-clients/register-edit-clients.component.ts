@@ -57,8 +57,18 @@ export class RegisterEditClientsComponent {
         ).then(() => {
           window.location.reload();
         })
-      }, error =>
-        console.error("Client couldn't be updated",error))
+      }, error =>{
+        console.error("Client couldn't be updated",error);
+        Swal.fire({
+          title: 'Failure',
+          text: 'Client data not updated',
+          icon: 'error',
+          color: 'rgb(240, 248, 255)',
+          background: 'rgb(39, 39, 39)'
+        }
+        )
+      })
+        
     } else {
 
       this.clientsService.registerClient(client).subscribe(() => {
@@ -72,8 +82,16 @@ export class RegisterEditClientsComponent {
         ).then(() => {
           window.location.reload();
         })
-      }, error =>
-        console.error("Client couldn't be created",error))
+      }, error =>{
+        console.error("Client couldn't be created",error);
+        Swal.fire({
+          title: 'Failure',
+          text: 'Client data not added',
+          icon: 'error',
+          color: 'rgb(240, 248, 255)',
+          background: 'rgb(39, 39, 39)'
+        })
+      })
     }
 
 

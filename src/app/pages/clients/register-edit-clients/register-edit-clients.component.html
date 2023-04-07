@@ -1,1 +1,49 @@
-<p>register-edit-clients works!</p>
+<h1 class="display-6">Register</h1>
+<hr>
+<!-- Forms components == more points-->
+<!--You can use Get in api for enum components-->
+<div class="container-fluid">
+  <form>
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="cpf" class="form-label">CPF</label>
+          <input type="text" class="form-control" id="cpf" formControlName="cpf">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="number"  class="form-control" id="phoneNumber" formControlName="phoneNumber">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="monthlyIncome" class="form-label">Monthly Income</label>
+          <input type="number" min="0" class="form-control" id="monthlyIncome" formControlName="monthlyIncome">
+        </div>
+      </div>
+      <br>
+      <h2 class="lead">Address</h2>
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="cep" class="form-label">CEP</label>
+          <input type="number"  class="form-control" id="cep" formControlName="cep">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="street" class="form-label">Street Name</label>
+          <input type="text"  class="form-control" id="street" formControlName="street">
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="mb-3">
+          <label for="number" class="form-label">Number</label>
+          <input type="number"  class="form-control" id="number" formControlName="number">
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-outline-light">Save</button>
+  </form>
+</div>

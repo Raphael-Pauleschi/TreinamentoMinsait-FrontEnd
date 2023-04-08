@@ -42,7 +42,7 @@ export class RegisterEditClientsComponent {
     }
 
   }
-  registerAndSubmit() {
+  registerOrEdit() {
     const client: IClient = this.clientForm.value as IClient
     if (this.clientCpf) {
 

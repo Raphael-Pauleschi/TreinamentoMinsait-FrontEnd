@@ -20,11 +20,14 @@
         <td>{{client.cep}}</td>
         <td>{{client.street}}, {{client.number}}</td>
         <td>
-            &nbsp;
+          &nbsp;
+          <a routerLink="/clients/{{client.cpf}}/loans" class="btn btn-outline-light btn-sm">Access loans</a>
+          &nbsp;
           <a routerLink="/clients/edit/{{client.cpf}}"  class="btn btn-outline-light btn-sm">Update</a>
           &nbsp;
           <button type="button" (click)="delete(client.cpf)" class="btn btn-outline-danger btn-sm">Delete</button>
-      </td>
+          
+        </td>
       </tr>
 
     </tbody>

@@ -25,10 +25,8 @@
       <div class="col-3">
         <div class="mb-3">
           <label for="relation" class="form-label">Relation type</label>
-          <select class="form-control"  id="relation" formControlName="relation">
-            <option value="BRONZE" selected>Bronze</option>
-            <option value="PRATA">Prata</option>
-            <option value="OURO">Ouro</option>
+          <select  class="form-control"  id="relation" formControlName="relation">
+            <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
           </select>
         </div>
       </div>

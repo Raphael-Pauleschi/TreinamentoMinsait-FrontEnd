@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ILoan } from 'src/app/interfaces/loan';
+import { RelationsService } from 'src/app/services/relations.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,8 +20,19 @@ export class RegisterLoansComponent {
   })
 
   clientCpf = String(this.route.snapshot.paramMap.get('cpf'));
+  relations : String[] = [];
 
-  constructor(private loansService: LoansService, private route: ActivatedRoute){}
+  constructor(private loansService: LoansService, 
+    private relationsService: RelationsService,
+    private route: ActivatedRoute){}
+
+ngOnInit() {
+  this.relationsService.getRelations().subscribe(result =>{
+    this.relations = result;
+    console.log(result);
+  })
+  
+}
 
   register(){
     const loan : ILoan = this.loanForm.value as ILoan

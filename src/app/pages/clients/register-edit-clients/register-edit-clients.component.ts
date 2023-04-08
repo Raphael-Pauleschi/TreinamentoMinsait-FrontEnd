@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IClient } from 'src/app/interfaces/client';
-import Swal from 'sweetalert2';
+import {showSuccessAlert, showErrorAlert} from 'src/assets/util-sweetalert'
 
 @Component({
   selector: 'app-register-edit-clients',
@@ -47,50 +47,19 @@ export class RegisterEditClientsComponent {
     if (this.clientCpf) {
 
       this.clientsService.editCient(this.clientCpf, client).subscribe(() => {
-        Swal.fire({
-          title: 'Success',
-          text: 'Client data updated',
-          icon: 'success',
-          color: 'rgb(240, 248, 255)',
-          background: 'rgb(39, 39, 39)'
-        }
-        ).then(() => {
-          window.location.reload();
-        })
+        showSuccessAlert("Cliet data updated")
       }, error =>{
         console.error("Client couldn't be updated",error);
-        Swal.fire({
-          title: 'Failure',
-          text: 'Client data not updated',
-          icon: 'error',
-          color: 'rgb(240, 248, 255)',
-          background: 'rgb(39, 39, 39)'
-        }
-        )
+       showErrorAlert("Client hasn't been updated")
       })
         
     } else {
 
       this.clientsService.registerClient(client).subscribe(() => {
-        Swal.fire({
-          title: 'Success',
-          text: 'Client added to database',
-          icon: 'success',
-          color: 'rgb(240, 248, 255)',
-          background: 'rgb(39, 39, 39)'
-        }
-        ).then(() => {
-          window.location.reload();
-        })
+        showSuccessAlert("Client data created")
       }, error =>{
         console.error("Client couldn't be created",error);
-        Swal.fire({
-          title: 'Failure',
-          text: 'Client data not added',
-          icon: 'error',
-          color: 'rgb(240, 248, 255)',
-          background: 'rgb(39, 39, 39)'
-        })
+       showErrorAlert("Client not added");
       })
     }
 
@@ -98,5 +67,6 @@ export class RegisterEditClientsComponent {
   }
 
 }
+
 
 

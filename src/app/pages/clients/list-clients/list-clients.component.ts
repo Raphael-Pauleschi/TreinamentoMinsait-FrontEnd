@@ -1,7 +1,7 @@
 import { IClient } from 'src/app/interfaces/client';
 import { ClientsService } from './../../../services/clients.service';
 import { Component } from '@angular/core';
-import Swal from 'sweetalert2';
+import {showSuccessAlert, showErrorAlert} from 'src/assets/util-sweetalert'
 
 @Component({
   selector: 'app-list-clients',
@@ -22,25 +22,10 @@ export class ListClientsComponent {
 
   delete(cpf: string){
     this.clientsService.deleteClient(cpf).subscribe(()=>{
-      Swal.fire({
-        title:'Success',
-        text:'The data has been deleted',
-        icon:'success',
-        color: 'rgb(240, 248, 255)',
-        background: 'rgb(39, 39, 39)'
-      }
-      ).then(()=>{
-        window.location.reload();
-      })
+      showSuccessAlert('The data has been deleted')
     }, error =>{
       console.error("Couldn't be deleted",error)
-      Swal.fire({
-        title: 'Failure',
-        text: 'Client has not been deleted',
-        icon: 'error',
-        color: 'rgb(240, 248, 255)',
-        background: 'rgb(39, 39, 39)'
-      })
+      showErrorAlert('Client has not been deleted')
     }
     )
   }

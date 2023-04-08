@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ILoan } from 'src/app/interfaces/loan';
 import { RelationsService } from 'src/app/services/relations.service';
-import Swal from 'sweetalert2';
+import {showSuccessAlert, showErrorAlert} from 'src/assets/util-sweetalert'
 
 @Component({
   selector: 'app-register-loans',
@@ -40,26 +40,10 @@ ngOnInit() {
     this.loansService.registerLoan(this.clientCpf, loan).subscribe(
       (result)=>{
         console.log(result)
-        Swal.fire({
-          title: 'Success',
-          text: 'Loan data created',
-          icon: 'success',
-          color: 'rgb(240, 248, 255)',
-          background: 'rgb(39, 39, 39)'
-        }
-        ).then(() => {
-          window.location.reload();
-        })
+        showSuccessAlert ('Loan data created')
       }, error =>{
         console.error("Loan couldn't be created",error);
-        Swal.fire({
-          title: 'Failure',
-          text: 'Loan data not created',
-          icon: 'error',
-          color: 'rgb(240, 248, 255)',
-          background: 'rgb(39, 39, 39)'
-        }
-        )
+        showErrorAlert( 'Loan data not created')
       }
     )
   }

@@ -1,1 +1,38 @@
-<p>register-loans works!</p>
+<h1 class="display-6">Register loan</h1>
+<hr>
+
+<div class="container-fluid">
+  <form [formGroup]="loanForm" (ngSubmit)="register()">
+    <div class="row">
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="initialValue" class="form-label">Initial Value</label>
+          <input type="number" class="form-control" id="initialValue" formControlName="initialValue" [value]=0>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="initialDate" class="form-label">Initial Date</label>
+          <input type="date" class="form-control" id="initialDate" formControlname="initialDate">
+        </div>
+      </div>
+      <div class="col-3">
+        <div clss="mb-3">
+          <label for="finalDate" class="form-label">Final Date</label>
+          <input type="date" class="form-control" id="finalDate" formControlname="finalDate">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="relation" class="form-label">Relation type</label>
+          <select class="form-control"  id="relation" formControlName="relation">
+            <option value="BRONZE" selected>Bronze</option>
+            <option value="PRATA">Prata</option>
+            <option value="OURO">Ouro</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-outline-light">Save</button>
+  </form>
+</div>

@@ -1,6 +1,6 @@
 <h1 class="display-5">Loans</h1>
 <hr>
-<a routerLink="/clients/{{loans[0].cpfClient}}/loans/register" class="btn btn-outline-info">Add</a>
+<a routerLink="/clients/{{clientCpf}}/loans/register" class="btn btn-outline-info">Add</a>
 <table class="table table-dark table-stripped table-bordered mt-3">
   <thead>
     <tr>
@@ -23,17 +23,9 @@
       <td>{{loan.relation}}</td>
       <td>
         &nbsp;
-        <button class="btn btn-outline-danger btn-sm">Delete</button>
+        <button type="button" (click)="delete(loan.id)" class="btn btn-outline-danger btn-sm">Delete</button>
       </td>
     </tr>
   </tbody>
 
 </table>
-
-<!--private Long id;
-	private String cpfClient;
-	private Double initialValue;
-	private Double finalValue;
-	private Date initialDate;
-	private Date finalDate;
-	private Relation relation;-->

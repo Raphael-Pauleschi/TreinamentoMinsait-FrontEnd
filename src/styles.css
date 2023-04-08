@@ -1,4 +1,13 @@
 body{
     background-color: rgb(48, 48, 48);
     color: aliceblue;
+    overflow-x: hidden;
 }
+.form-control {
+    background-color: #353535;
+    color: aliceblue;
+  }
+  .form-control:focus {
+    border-color: #5c5b5b;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(105, 105, 105, 0.6);
+  } 

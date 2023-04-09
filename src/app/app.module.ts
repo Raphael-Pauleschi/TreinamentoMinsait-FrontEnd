@@ -11,6 +11,8 @@ import { ListClientsComponent } from './pages/clients/list-clients/list-clients.
 import { RegisterEditClientsComponent } from './pages/clients/register-edit-clients/register-edit-clients.component';
 import { ListLoansComponent } from './pages/loans/list-loans/list-loans.component';
 import { RegisterLoansComponent } from './pages/loans/register-loans/register-loans.component';
+import { FormInputComponent } from './components/form-input/form-input.component';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,15 +21,18 @@ import { RegisterLoansComponent } from './pages/loans/register-loans/register-lo
       ListClientsComponent,
     RegisterEditClientsComponent,
     ListLoansComponent,
-    RegisterLoansComponent
+    RegisterLoansComponent,
+    FormInputComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskDirective, NgxMaskPipe
+
   ],
-  providers: [],
+  providers: [ provideEnvironmentNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

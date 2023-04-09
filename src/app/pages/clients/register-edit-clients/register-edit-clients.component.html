@@ -1,49 +1,40 @@
 <h1 class="display-6">{{clientCpf? 'Edit client':'Register client'}}</h1>
 <hr>
-<!-- Forms components == more points-->
-<!--You can use Get in api for enum components-->
 <div class="container-fluid">
   <form [formGroup]="clientForm" (ngSubmit)="registerOrEdit()" >
     <div class="row">
       <div class="col-4">
-        <div class="mb-3">
-          <label for="cpf" class="form-label">CPF</label>
-          <input type="text" class="form-control" id="cpf" formControlName="cpf">
-        </div>
+        <app-form-input inputName="cpf"  [parentFormGroup]="clientForm" 
+        inputMask="000.000.000-00"
+        [isReadOnly]="clientCpf ? true : false"/>
       </div>
       <div class="col-4">
-        <div class="mb-3">
-          <label for="phoneNumber" class="form-label">Phone Number</label>
-          <input type="text"  class="form-control" id="phoneNumber" formControlName="phoneNumber">
-        </div>
+        <app-form-input inputName="phoneNumber"  
+        inputMask="(00) 00000-0000||+00 (00) 00000-0000"
+        [parentFormGroup]="clientForm"/>
       </div>
+     
       <div class="col-4">
-        <div class="mb-3">
-          <label for="monthlyIncome" class="form-label">Monthly Income</label>
-          <input type="number" min="0" class="form-control" id="monthlyIncome" formControlName="monthlyIncome">
-        </div>
+        <app-form-input inputName="monthlyIncome" inputType="number" [parentFormGroup]="clientForm"/>
       </div>
-      <br>
+      
+    
       <h2 class="lead">Address</h2>
       <div class="col-4">
-        <div class="mb-3">
-          <label for="cep" class="form-label">CEP</label>
-          <input type="number"  class="form-control" id="cep" formControlName="cep">
-        </div>
+        <app-form-input inputName="cep"
+        inputMask="00000-000"
+        [parentFormGroup]="clientForm"/>
       </div>
+      
       <div class="col-6">
-        <div class="mb-3">
-          <label for="streetName" class="form-label">Street Name</label>
-          <input type="text"  class="form-control" id="streetName" formControlName="streetName">
-        </div>
+        <app-form-input inputName="streetName" [parentFormGroup]="clientForm"/>
       </div>
+     
       <div class="col-2">
-        <div class="mb-3">
-          <label for="streetNumber" class="form-label">Street Number</label>
-          <input type="number"  class="form-control" id="streetNumber" formControlName="streetNumber">
-        </div>
+        <app-form-input inputName="streetNumber" inputType="number" [parentFormGroup]="clientForm"/>
       </div>
+      
     </div>
-    <button type="submit" class="btn btn-outline-light">Save</button>
+      <button type="submit" [disabled]="!clientForm.valid" class="btn btn-outline-light">Save</button>
   </form>
 </div>

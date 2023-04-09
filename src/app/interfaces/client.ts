@@ -3,6 +3,6 @@ export interface IClient {
     phoneNumber: string;
     monthlyIncome: number;
     cep: string;
-    street: string;
-    number: string;
+    streetName: string;
+    streetNumber: string;
 }

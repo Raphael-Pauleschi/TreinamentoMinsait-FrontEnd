@@ -18,7 +18,7 @@
         <td>{{client.phoneNumber }}</td>
         <td>{{client.monthlyIncome || 0|currency:'BRL'}}</td>
         <td>{{client.cep}}</td>
-        <td>{{client.street}}, {{client.number}}</td>
+        <td>{{client.streetName}}, {{client.streetNumber}}</td>
         <td>
           &nbsp;
           <a routerLink="/clients/{{client.cpf}}/loans" class="btn btn-outline-light btn-sm">Access loans</a>

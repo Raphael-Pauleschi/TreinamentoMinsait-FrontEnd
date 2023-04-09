@@ -16,8 +16,8 @@ export class RegisterEditClientsComponent {
     phoneNumber: new FormControl('', Validators.required),
     monthlyIncome: new FormControl(0, Validators.required),
     cep: new FormControl('', Validators.required),
-    street: new FormControl('', Validators.required),
-    number: new FormControl('', Validators.required)
+    streetName: new FormControl('', Validators.required),
+    streetNumber: new FormControl('', Validators.required)
   })
 
   clientCpf = this.route.snapshot.paramMap.get('cpf');
@@ -34,8 +34,8 @@ export class RegisterEditClientsComponent {
             phoneNumber: client.phoneNumber,
             monthlyIncome: client.monthlyIncome,
             cep: client.cep,
-            street: client.street,
-            number: client.number
+            streetName: client.streetName,
+            streetNumber: client.streetNumber
           })
         }, error => console.error("Client not found", error))
 

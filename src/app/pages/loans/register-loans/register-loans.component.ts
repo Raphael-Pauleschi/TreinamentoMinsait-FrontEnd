@@ -34,6 +34,10 @@ ngOnInit() {
   
 }
 
+getRelationOptions() {
+  return this.relations;
+}
+
   register(){
     const loan : ILoan = this.loanForm.value as ILoan
 

@@ -1,0 +1,22 @@
+<div [formGroup]="parentFormGroup">
+    <label for="{{inputName}}" class="form-label">{{labelName}}</label>
+    <ng-container *ngIf="!isSelect()">
+        <input
+        type="{{inputType}}" 
+        class="form-control" 
+        id="{{inputName}}" 
+        formControlName="{{inputName}}" 
+        [readonly]="isReadOnly"
+        >
+    </ng-container>
+    <ng-container *ngIf="isSelect()">
+        <select
+      class="form-control"
+      id="{{inputName}}"
+      formControlName="{{inputName}}"
+    >
+      <option *ngFor="let option of selectOptions" [value]="option">{{option}}</option>
+    </select>
+    </ng-container>
+   
+</div>

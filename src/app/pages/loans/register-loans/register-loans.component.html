@@ -5,32 +5,20 @@
   <form [formGroup]="loanForm" (ngSubmit)="register()">
     <div class="row">
       <div class="col-3">
-        <div class="mb-3">
-          <label for="initialValue" class="form-label">Initial Value</label>
-          <input type="number" class="form-control" id="initialValue" formControlName="initialValue" [value]=0>
-        </div>
+        <app-form-input inputName="initialValue" labelName="Initial Value" inputType="number"  [parentFormGroup]="loanForm"/>
       </div>
       <div class="col-3">
-        <div class="mb-3">
-          <label for="initialDate" class="form-label">Initial Date</label>
-          <input type="date" class="form-control" id="initialDate" formControlname="initialDate">
-        </div>
+        <app-form-input inputName="initialDate" labelName="Initial Date" inputType="date"  [parentFormGroup]="loanForm"/>
       </div>
       <div class="col-3">
-        <div clss="mb-3">
-          <label for="finalDate" class="form-label">Final Date</label>
-          <input type="date" class="form-control" id="finalDate" formControlname="finalDate">
-        </div>
+        <app-form-input inputName="finalDate" labelName="Final Date" inputType="date"  [parentFormGroup]="loanForm"/>
       </div>
+      
       <div class="col-3">
-        <div class="mb-3">
-          <label for="relation" class="form-label">Relation type</label>
-          <select  class="form-control"  id="relation" formControlName="relation">
-            <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
-          </select>
-        </div>
+        <app-form-input inputName="relation" labelName="Relation" [selectOptions]="getRelationOptions()" [parentFormGroup]="loanForm"/>
       </div>
     </div>
+    <br>
     <button type="submit" class="btn btn-outline-light">Save</button>
   </form>
 </div>

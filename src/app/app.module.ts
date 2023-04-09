@@ -12,6 +12,7 @@ import { RegisterEditClientsComponent } from './pages/clients/register-edit-clie
 import { ListLoansComponent } from './pages/loans/list-loans/list-loans.component';
 import { RegisterLoansComponent } from './pages/loans/register-loans/register-loans.component';
 import { FormInputComponent } from './components/form-input/form-input.component';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,9 +28,11 @@ import { FormInputComponent } from './components/form-input/form-input.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskDirective, NgxMaskPipe
+
   ],
-  providers: [],
+  providers: [ provideEnvironmentNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

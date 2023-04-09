@@ -13,6 +13,7 @@ export class FormInputComponent {
   @Input() isReadOnly: boolean = false;
   @Input() parentFormGroup!: FormGroup;
   @Input() selectOptions: String[] = [];
+  @Input() inputMask: String = "";
   
   constructor(){}
 

@@ -3,10 +3,13 @@
     <ng-container *ngIf="!isSelect()">
         <input
         type="{{inputType}}" 
+        mask="{{inputMask}}"
         class="form-control" 
         id="{{inputName}}" 
         formControlName="{{inputName}}" 
         [readonly]="isReadOnly"
+       [min] = "inputType === 'number' ? 0 : null"
+       
         >
     </ng-container>
     <ng-container *ngIf="isSelect()">

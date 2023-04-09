@@ -5,17 +5,17 @@
   <form [formGroup]="loanForm" (ngSubmit)="register()">
     <div class="row">
       <div class="col-3">
-        <app-form-input inputName="initialValue" labelName="Initial Value" inputType="number"  [parentFormGroup]="loanForm"/>
+        <app-form-input inputName="initialValue"  inputType="number"  [parentFormGroup]="loanForm"/>
       </div>
       <div class="col-3">
-        <app-form-input inputName="initialDate" labelName="Initial Date" inputType="date"  [parentFormGroup]="loanForm"/>
+        <app-form-input inputName="initialDate" inputType="date"  [parentFormGroup]="loanForm"/>
       </div>
       <div class="col-3">
-        <app-form-input inputName="finalDate" labelName="Final Date" inputType="date"  [parentFormGroup]="loanForm"/>
+        <app-form-input inputName="finalDate" inputType="date"  [parentFormGroup]="loanForm"/>
       </div>
       
       <div class="col-3">
-        <app-form-input inputName="relation" labelName="Relation" [selectOptions]="getRelationOptions()" [parentFormGroup]="loanForm"/>
+        <app-form-input inputName="relation"  [selectOptions]="getRelationOptions()" [parentFormGroup]="loanForm"/>
       </div>
     </div>
     <br>

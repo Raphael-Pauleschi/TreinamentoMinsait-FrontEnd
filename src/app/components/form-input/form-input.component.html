@@ -1,5 +1,5 @@
 <div [formGroup]="parentFormGroup">
-    <label for="{{inputName}}" class="form-label">{{labelName}}</label>
+    <label for="{{inputName}}" class="form-label">{{labelName || formatLabelName(inputName)}}</label>
     <ng-container *ngIf="!isSelect()">
         <input
         type="{{inputType}}" 

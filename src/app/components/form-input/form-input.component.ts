@@ -20,5 +20,14 @@ export class FormInputComponent {
     return this.selectOptions.length > 0;
   }
 
+  formatLabelName(inputName: string): string {
+    // Transforma camelCase em palavras separadas por espaço
+    let labelName = inputName.replace(/([a-z])([A-Z])/g, '$1 $2');
+    // Verifica se a palavra tem menos de três letras e a transforma em maiúsculas
+    labelName = labelName.replace(/\b\w{1,3}\b/g, (word) => word.toUpperCase());
+    // Transforma a primeira letra em maiúscula
+    labelName = labelName.charAt(0).toUpperCase() + labelName.slice(1);
+    return labelName;
+  }
 
 }

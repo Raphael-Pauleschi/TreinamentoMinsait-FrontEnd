@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ILoan } from 'src/app/interfaces/loan';
 import {showSuccessAlert, showErrorAlert} from 'src/assets/util-sweetalert'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-loans',
@@ -23,12 +24,23 @@ export class ListLoansComponent {
   }
 
   delete(id: number){
-    this.loansService.deleteLoan(this.clientCpf, id).subscribe(()=>{
-      showSuccessAlert('The loan data has been deleted')
-    }, error =>{
-      console.error("Couldn't be deleted",error)
-      showErrorAlert('Loan has not been deleted')
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      color: 'rgb(240, 248, 255)',
+      background: 'rgb(39, 39, 39)',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(() => {
+      this.loansService.deleteLoan(this.clientCpf, id).subscribe(()=>{
+        showSuccessAlert('The loan data has been deleted')
+      }, error =>{
+        console.error("Couldn't be deleted",error)
+        showErrorAlert('Loan has not been deleted')
+      })
     })
+    
   }
 
 

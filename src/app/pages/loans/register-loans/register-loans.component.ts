@@ -1,8 +1,9 @@
 import { LoansService } from './../../../services/loans.service';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ILoan } from 'src/app/interfaces/loan';
+import { ClientsService } from 'src/app/services/clients.service';
 import { RelationsService } from 'src/app/services/relations.service';
 import {showSuccessAlert, showErrorAlert} from 'src/assets/util-sweetalert'
 
@@ -23,14 +24,21 @@ export class RegisterLoansComponent {
   relations : String[] = [];
 
   constructor(private loansService: LoansService, 
+    private clientsService: ClientsService,
+    private routeRedirect: Router,
     private relationsService: RelationsService,
     private route: ActivatedRoute){}
 
 ngOnInit() {
-  this.relationsService.getRelations().subscribe(result =>{
-    this.relations = result;
-    console.log(result);
+  this.clientsService.findOneClient(this.clientCpf).subscribe(()=>{
+    this.relationsService.getRelations().subscribe(result =>{
+      this.relations = result;
+    })
+  }, error =>{
+    console.error(error)
+    this.routeRedirect.navigate(['clients'])
   })
+ 
   
 }
 

@@ -1,6 +1,7 @@
+import { ClientsService } from './../../../services/clients.service';
 import { LoansService } from './../../../services/loans.service';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ILoan } from 'src/app/interfaces/loan';
 import {showSuccessAlert, showErrorAlert} from 'src/assets/util-sweetalert'
 import Swal from 'sweetalert2';
@@ -14,13 +15,25 @@ export class ListLoansComponent {
   loans: ILoan[] = [];
   clientCpf = String( this.route.snapshot.paramMap.get("cpf"));
 
-  constructor(private loansService: LoansService, private route: ActivatedRoute){}
+  constructor(private loansService: LoansService, 
+    private clientService: ClientsService,
+    private routeRedirect: Router,
+    private route: ActivatedRoute){}
 
   ngOnInit(){
-    this.loansService.findAllLoan(this.clientCpf).subscribe(result=>{
-      console.log(result)
-      this.loans = result;
-    })
+    this.clientService.findOneClient(this.clientCpf).subscribe(
+      ()=>{
+        this.loansService.findAllLoan(this.clientCpf).subscribe(result=>{
+          this.loans = result;
+        })
+      }, error => {
+        console.error(error)
+        this.routeRedirect.navigate([""])
+      }
+
+      
+    )
+    
   }
 
   delete(id: number){

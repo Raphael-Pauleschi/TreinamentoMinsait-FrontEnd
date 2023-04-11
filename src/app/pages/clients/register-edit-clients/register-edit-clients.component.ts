@@ -1,7 +1,7 @@
 import { ClientsService } from './../../../services/clients.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IClient } from 'src/app/interfaces/client';
 import {showSuccessAlert, showErrorAlert} from 'src/assets/util-sweetalert'
 
@@ -22,7 +22,10 @@ export class RegisterEditClientsComponent {
 
   clientCpf = this.route.snapshot.paramMap.get('cpf');
 
-  constructor(private clientsService: ClientsService, private route: ActivatedRoute) { }
+  constructor(private clientsService: ClientsService, 
+    private route: ActivatedRoute,
+    private routeDirect: Router
+    ) { }
 
   ngOnInit() {
 
@@ -37,7 +40,10 @@ export class RegisterEditClientsComponent {
             streetName: client.streetName,
             streetNumber: client.streetNumber
           })
-        }, error => console.error("Client not found", error))
+        }, error => {
+          console.error("Client not found", error)
+          this.routeDirect.navigate(['clients']);
+          })
 
     }
 

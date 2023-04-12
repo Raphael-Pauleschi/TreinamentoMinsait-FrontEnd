@@ -1,6 +1,5 @@
 import Swal from 'sweetalert2';
-
-export function showSuccessAlert(message?: string) {
+export function showSuccessAlert(message?: string, link?: string) {
     Swal.fire({
         title: 'Success',
         text:  message || "The operation is a success",

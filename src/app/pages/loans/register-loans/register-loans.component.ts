@@ -24,17 +24,14 @@ export class RegisterLoansComponent {
   relations : String[] = [];
 
   constructor(private loansService: LoansService, 
-    private clientsService: ClientsService,
     private routeRedirect: Router,
     private relationsService: RelationsService,
     private route: ActivatedRoute){}
 
 ngOnInit() {
-  this.clientsService.findOneClient(this.clientCpf).subscribe(()=>{
     this.relationsService.getRelations().subscribe(result =>{
       this.relations = result;
-    })
-  }, error =>{
+    }, error =>{
     console.error(error)
     this.routeRedirect.navigate(['clients'])
   })

@@ -16,23 +16,16 @@ export class ListLoansComponent {
   clientCpf = String( this.route.snapshot.paramMap.get("cpf"));
 
   constructor(private loansService: LoansService, 
-    private clientService: ClientsService,
     private routeRedirect: Router,
     private route: ActivatedRoute){}
 
   ngOnInit(){
-    this.clientService.findOneClient(this.clientCpf).subscribe(
-      ()=>{
         this.loansService.findAllLoan(this.clientCpf).subscribe(result=>{
           this.loans = result;
-        })
-      }, error => {
+        }, error => {
         console.error(error)
         this.routeRedirect.navigate([""])
-      }
-
-      
-    )
+      })
     
   }
 

@@ -5,6 +5,7 @@
     <thead>
       <tr>
         <th scope="col">CPF</th>
+        <th scope="col">Name</th>
         <th scope="col">Phone Number</th>
         <th scope="col">Monthly Income</th>
         <th scope="col">CEP</th>
@@ -15,6 +16,7 @@
     <tbody>
       <tr *ngFor="let client of clients">
         <th scope="row">{{client.cpf}}</th>
+        <td>{{client.name}}</td>
         <td>{{client.phoneNumber }}</td>
         <td>{{client.monthlyIncome || 0|currency:'BRL'}}</td>
         <td>{{client.cep}}</td>

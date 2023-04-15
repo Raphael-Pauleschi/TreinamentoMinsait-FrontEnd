@@ -3,6 +3,9 @@
 <div class="container-fluid">
   <form [formGroup]="clientForm" (ngSubmit)="registerOrEdit()" >
     <div class="row">
+      <div class="col-6">
+        <app-form-input inputName="name" [parentFormGroup]="clientForm"/>
+      </div>
       <div class="col-4">
         <app-form-input inputName="cpf"  [parentFormGroup]="clientForm" 
         inputMask="000.000.000-00"

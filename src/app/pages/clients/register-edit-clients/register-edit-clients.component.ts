@@ -13,6 +13,7 @@ import {showSuccessAlert, showErrorAlert} from 'src/assets/util-sweetalert'
 export class RegisterEditClientsComponent {
   clientForm = new FormGroup({
     cpf: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
     phoneNumber: new FormControl('', Validators.required),
     monthlyIncome: new FormControl(0, Validators.required),
     cep: new FormControl('', Validators.required),
@@ -34,6 +35,7 @@ export class RegisterEditClientsComponent {
         (client: IClient) => {
           this.clientForm.setValue({
             cpf: client.cpf,
+            name: client.name,
             phoneNumber: client.phoneNumber,
             monthlyIncome: client.monthlyIncome,
             cep: client.cep,

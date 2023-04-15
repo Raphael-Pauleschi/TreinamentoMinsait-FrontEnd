@@ -5,4 +5,5 @@ export interface IClient {
     cep: string;
     streetName: string;
     streetNumber: string;
+    name: string;
 }
